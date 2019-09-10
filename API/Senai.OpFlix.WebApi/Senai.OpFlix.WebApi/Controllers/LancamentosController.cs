@@ -14,32 +14,32 @@ namespace Senai.OpFlix.WebApi.Controllers
     [Route("api/[controller]")]
     [Produces("application/json")]
     [ApiController]
-    public class CategoriasController : ControllerBase
+    public class LancamentosController : ControllerBase
     {
-        private ICategoriaRepository CategoriaRepository { get; set; }
+        private ILancamentosRepository LancamentoRepository { get; set; }
 
-        public CategoriasController()
+        public LancamentosController()
         {
-            CategoriaRepository = new CategoriaRepository();
+            LancamentoRepository = new LancamentoRepository();
         }
 
         [Authorize]
         [HttpGet]
-        public IActionResult ListarCategorias()
+        public IActionResult ListarLancamentos()
         {
-            return Ok(CategoriaRepository.Listar());
+            return Ok(LancamentoRepository.Listar());
         }
 
         [Authorize(Roles = "Administrador")]
         [HttpGet("{id}")]
-        public IActionResult BuscarPorId (int id)
+        public IActionResult BuscarPorId(int id)
         {
             try
             {
-                Categorias categoria = CategoriaRepository.BuscarPorId(id);
-                if (categoria == null)
+                Lancamentos lancamento = LancamentoRepository.BuscarPorId(id);
+                if (lancamento == null)
                     return null;
-                return Ok(categoria);
+                return Ok(lancamento);
             }
             catch (Exception ex)
             {
@@ -47,13 +47,13 @@ namespace Senai.OpFlix.WebApi.Controllers
             }
         }
 
-        [Authorize(Roles = "Administrador")]
+        [Authorize (Roles = "Administrador")]
         [HttpPost]
-        public IActionResult Cadastrar (Categorias categoria)
+        public IActionResult Cadastrar(Lancamentos lancamento)
         {
             try
             {
-                CategoriaRepository.Cadastrar(categoria);
+                LancamentoRepository.Cadastrar(lancamento);
                 return Ok();
             }
             catch (Exception ex)
@@ -62,18 +62,18 @@ namespace Senai.OpFlix.WebApi.Controllers
             }
         }
 
-        [Authorize(Roles = "Administrador")]
+        [Authorize (Roles = "Administrador")]
         [HttpPut]
-        public IActionResult Atualizar (Categorias categoria)
+        public IActionResult AtualizarLancamentos(Lancamentos lancamento)
         {
             try
             {
-                Categorias CategoriaEncotrada = CategoriaRepository.BuscarPorId(categoria.IdCategoria);
+                Lancamentos LancamentoProcurado = LancamentoRepository.BuscarPorId(lancamento.IdLancamentos);
 
-                if (CategoriaEncotrada == null)
+                if (LancamentoProcurado == null)
                     return NotFound();
 
-                CategoriaRepository.Atualizar(categoria);
+                LancamentoRepository.Atualizar(lancamento);
                 return Ok();
             }
             catch (Exception ex)
@@ -82,11 +82,11 @@ namespace Senai.OpFlix.WebApi.Controllers
             }
         }
 
-        [Authorize(Roles = "Administrador")]
-        [HttpDelete ("{id}")]
-        public IActionResult Delete (int id)
+        [Authorize (Roles = "Administrador")]
+        [HttpDelete("{id}")]
+        public IActionResult DeletarLancamentos(int id)
         {
-            CategoriaRepository.Deletar(id);
+            LancamentoRepository.Deletar(id);
             return Ok();
         }
     }

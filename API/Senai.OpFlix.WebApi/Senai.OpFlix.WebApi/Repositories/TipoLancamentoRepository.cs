@@ -11,12 +11,12 @@ namespace Senai.OpFlix.WebApi.Repositories
     {
         OpFlixContext ctx = new OpFlixContext();
 
-        public List<Categorias> Listar()
+        public List<TiposLancamentos> Listar()
         {
             return ctx.TiposLancamentos.ToList();
         }
 
-        public void Cadastar(Categorias tipolancamento)
+        public void Cadastar(TiposLancamentos tipolancamento)
         {
             ctx.TiposLancamentos.Add(tipolancamento);
             ctx.SaveChanges();

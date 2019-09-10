@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai.OpFlix.WebApi.Domains;
@@ -21,15 +22,17 @@ namespace Senai.OpFlix.WebApi.Controllers
         {
             TipoLancamentoRepository = new TipoLancamentoRepository();
         }
-
+        
+        [Authorize]
         [HttpGet]
         public IActionResult ListarTipoLancamento()
         {
             return Ok(TipoLancamentoRepository.Listar());
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
-        public IActionResult Cadastrar(Categorias tipolancamento)
+        public IActionResult Cadastrar(TiposLancamentos tipolancamento)
         {
             try
             {

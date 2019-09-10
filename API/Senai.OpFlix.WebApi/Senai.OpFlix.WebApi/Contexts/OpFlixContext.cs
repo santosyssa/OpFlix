@@ -18,7 +18,7 @@ namespace Senai.OpFlix.WebApi.Domains
         public virtual DbSet<Categorias> Categorias { get; set; }
         public virtual DbSet<Lancamentos> Lancamentos { get; set; }
         public virtual DbSet<Plataformas> Plataformas { get; set; }
-        public virtual DbSet<Categorias> TiposLancamentos { get; set; }
+        public virtual DbSet<TiposLancamentos> TiposLancamentos { get; set; }
         public virtual DbSet<TiposUsuarios> TiposUsuarios { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
 
@@ -27,7 +27,7 @@ namespace Senai.OpFlix.WebApi.Domains
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=.\\SqlExpress; Initial Catalog=T_OpFlix;User Id=sa;Pwd=132");
+                optionsBuilder.UseSqlServer("Data Source=.\\sqlexpress;Initial Catalog=T_OpFlix;User Id=sa;Pwd=132;");
             }
         }
 
@@ -107,7 +107,7 @@ namespace Senai.OpFlix.WebApi.Domains
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Categorias>(entity =>
+            modelBuilder.Entity<TiposLancamentos>(entity =>
             {
                 entity.HasKey(e => e.IdTipoLancamento);
 

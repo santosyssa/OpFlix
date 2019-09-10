@@ -1,4 +1,5 @@
 ﻿using Senai.OpFlix.WebApi.Domains;
+using Senai.OpFlix.WebApi.ViewsModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace Senai.OpFlix.WebApi.Interfaces
 {
-    interface ITipoLancamentoRepository
+    public interface IUsuarioRepository
     {
-        List<TiposLancamentos> Listar();
+            Usuarios BuscarPorEmailESenha(LoginViewModel login);
 
-        void Cadastar(TiposLancamentos tipolancamento);
+            void Cadastrar(Usuarios usuario);
+  
     }
 }

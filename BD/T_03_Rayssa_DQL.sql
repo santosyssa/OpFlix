@@ -45,3 +45,6 @@ SELECT IdPlataforma, Nome, IdCategoria FROM Lancamentos
 
 SELECT * FROM vwPlataformas WHERE IdPlataforma = 1
 
+
+
+
