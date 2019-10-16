@@ -53,6 +53,14 @@ namespace Senai.OpFlix.WebApi
                     ValidAudience = "OpFlix.WebApi"
                 };
             });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                {
+                    builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+                });
+            });
         }
 
 
@@ -65,6 +73,8 @@ namespace Senai.OpFlix.WebApi
             }
 
             app.UseAuthentication();
+
+            app.UseCors("CorsPolicy");
 
             app.UseSwagger();
 

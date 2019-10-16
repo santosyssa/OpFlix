@@ -16,8 +16,8 @@ export default class Home extends Component{
             <img src={logo} />
   
             <nav className="cabecalhoPrincipal-nav">
-              <Link href=''>Categorias</Link>
-              <Link href=''>Cadastrar</Link>
+              <Link to='/categorias'>Categorias</Link>
+              <Link to='/cadastro'>Cadastrar</Link>
               <Link href=''>Plartaformas</Link>
             </nav>
           </div>

@@ -14,7 +14,7 @@ function App() {
           <img src={logo} />
 
           <nav className="cabecalhoPrincipal-nav">
-            <Link href=''>Lançamentos</Link>
+            <Link to='/lancamentos'>Lançamentos</Link>
             <Link href=''>Séries</Link>
             <Link href=''>Filmes</Link>
           </nav>
