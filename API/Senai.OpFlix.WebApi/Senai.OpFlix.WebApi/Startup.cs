@@ -53,13 +53,13 @@ namespace Senai.OpFlix.WebApi
                     ValidAudience = "OpFlix.WebApi"
                 };
             });
-
             services.AddCors(options =>
             {
-                options.AddPolicy("CorsPolicy", builder =>
-                {
-                    builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
-                });
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
             });
         }
 

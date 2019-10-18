@@ -18,7 +18,7 @@ export default class Lancamentos extends Component {
 
             nome: "",
             sinopse: "",
-            data_lacamento: "",
+            data_lancamento: "",
             classificacao: "",
             duracao: ""
 
