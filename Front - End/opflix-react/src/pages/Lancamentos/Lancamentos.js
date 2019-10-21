@@ -76,11 +76,11 @@ export default class Lancamentos extends Component {
                                                     <td>{element.idLancamentos}</td>
                                                     <td>{element.nome}</td>
                                                     <td>{element.sinopse}</td>
-                                                    <td>{element.data_lancamento}</td>
-                                                    <td>{element.idPlataformaNavegation === undefined ? "vázio" : element.idPlataformaNavegation.nome}</td>
-                                                    <td>{element.idCategoriaNavegation === undefined ? "vázio" : element.idCategoriaNavigation.nome}</td>
+                                                    <td>{element.dataLancamento}</td>
+                                                    <td>{element.idPlataformaNavigation === undefined ? "vázio" : element.idPlataformaNavigation.nome}</td>
+                                                    <td>{element.idCategoriaNavigation === undefined ? "vázio" : element.idCategoriaNavigation.nome}</td>
                                                     <td>{element.classificacao}</td>
-                                                    <td>{element.duracao_min}</td>
+                                                    <td>{element.duracaoMin}</td>
                                                 </tr>
                                             );
                                         })}

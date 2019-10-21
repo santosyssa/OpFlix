@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import {parseJwt} from './services/auth'
 
 //pages
 //cliente
@@ -38,20 +39,37 @@ const RotaPrivada = ({component: Component}) =>(
    />
 )
 
+const RotaAdmin = ({component: Component}) =>(
+    <Router
+        render={ props=>
+            localStorage.getItem("usuario-opflix") !== null && parseJwt().tipo !== 'Cliente' ?
+            (
+                <Component {...props}/>
+            ): (
+                <Redirect 
+                    to={{pathname: "/home", state: {from: props.location}}}
+                />
+            )
+        }
+    
+   />
+)
+
+
 const routing = (
     <Router>
         <div>
             <Switch>
                 {/* cliente */}
                 <Route exact path='/'component={Login}/>
-                <Route path='/home' component={App}/>
-                <Route path='/cadastrar' component={Cadastrar}/>
-                <Route path='/lancamentos' component={Lançamentos}/>
+                <RotaPrivada path='/home' component={App}/>
+                <RotaPrivada path='/cadastrar' component={Cadastrar}/>
+                <RotaPrivada path='/lancamentos' component={Lançamentos}/>
                 
                 {/* adm */}
-                <Route path='/adm' component={Home}/>
-                <Route path='/cadastro' component={CadastrarLancamentos}/>
-                <Route path='/categorias' component={Categorias}/>
+                <RotaAdmin path='/adm' component={Home}/>
+                <RotaAdmin path='/cadastro' component={CadastrarLancamentos}/>
+                <RotaAdmin path='/categorias' component={Categorias}/>
                 <Route component={NaoEncontrado}/>
             </Switch>
         </div>

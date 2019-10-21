@@ -9,7 +9,7 @@ import Titulo from "../../components/Titulo";
 export default class Cadastrar_Lancamentos extends Component {
 
     constructor() {
-        // tudo que tiver em component sera passado p ca
+
         super();
         this.state = {
             lista: [],
@@ -19,11 +19,11 @@ export default class Cadastrar_Lancamentos extends Component {
             nome: "",
             sinopse: "",
             data_lancamento: "",
-            plataforma: '',
-            categoria: '',
+            plataforma: "",
+            categoria: "",
             classificacao: "",
-            duracao: ""
-            
+            duracaoMin: ""
+
 
         }
     }
@@ -69,22 +69,20 @@ export default class Cadastrar_Lancamentos extends Component {
 
     cadastrarLancamento = (event) => {
         event.preventDefault();
-        console.log(this.state);
-
         fetch('http://localhost:5000/api/lancamentos', {
             method: "POST",
             body: JSON.stringify({
-                nome: "Lilo & Stitch",
-                sinopse: "sla",
-                DataLancamento: "1998-09-18T00:00:00",
-                IdPlataforma: "1",
-                IdCategoria: "1",
-                Classificacao : "L",
-                duracaoMin: "85 MIN"
+                nome: this.state.nome,
+                sinopse: this.state.sinopse,
+                DataLancamento: this.state.data_lancamento,
+                IdPlataforma: this.state.plataforma,
+                IdCategoria: this.state.categoria,
+                Classificacao: this.state.classificacao,
+                duracaoMin: this.state.duracaoMin,
             }),
             headers: {
                 "Content-Type": "application/json",
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix') 
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix')
             }
         })
             .then(data => console.log(data))
@@ -92,7 +90,7 @@ export default class Cadastrar_Lancamentos extends Component {
     }
 
     tituloLancamento = (event) => {
-        this.setState({ titulo: event.target.value });
+        this.setState({ nome: event.target.value });
     }
 
     sinopseLancamento = (event) => {
@@ -104,7 +102,6 @@ export default class Cadastrar_Lancamentos extends Component {
     }
 
     plataformaLancamento = (event) => {
-        console.log(event.target.value)
         this.setState({ plataforma: event.target.value });
     }
 
@@ -117,7 +114,8 @@ export default class Cadastrar_Lancamentos extends Component {
     }
 
     duracaoLancamento = (event) => {
-        this.setState({ duracao_min: event.target.value });
+        this.setState({ duracaoMin: event.target.value });
+        console.log(this.state.duracaoMin);
     }
 
     render() {
@@ -141,11 +139,23 @@ export default class Cadastrar_Lancamentos extends Component {
                     <div className='form_Login'>
                         <form>
                             <div className="container">
-                                <input type="text" id="lancamento__titulo" placeholder="Título do Lançamento" value={this.state.titulo} onChange={this.tituloLancamento} />
+                                <input
+                                    type="text"
+                                    id="lancamento__titulo"
+                                    placeholder="Título do Lançamento"
+                                    onInput={this.tituloLancamento} />
 
-                                <input type="text" id="lancamento__sinopse" placeholder="Sinopse" value={this.state.sinopse} onChange={this.sinopseLancamento} />
+                                <input type="text"
+                                    id="lancamento__sinopse"
+                                    placeholder="Sinopse"
+                                    value={this.state.sinopse}
+                                    onChange={this.sinopseLancamento} />
 
-                                <input type="date" id="lancamento__data" placeholder="dd/MM/yyyy" value={this.state.data_lancamento} onChange={this.data_Lancamento} />
+                                <input type="date"
+                                    id="lancamento__data"
+                                    placeholder="dd/MM/yyyy"
+                                    value={this.state.data_lancamento}
+                                    onChange={this.data_Lancamento} />
 
 
                                 <select id="option__tipoplataforma" onChange={this.plataformaLancamento}>
@@ -164,15 +174,37 @@ export default class Cadastrar_Lancamentos extends Component {
                                     })}
                                 </select>
 
-                                <input type="text" id="lancamento__classificacao" placeholder="Classificação" value={this.state.classificacao} onChange={this.classificacaoLancamento} />
+                                <input
+                                    type="text"
+                                    id="lancamento__classificacao"
+                                    placeholder="Classificação"
+                                    onInput={this.classificacaoLancamento} />
 
-                                <input type="text" id="lancamento__duracao" placeholder="Duração" onChange={this.duracaoLancamento} />
+                                <input type="text"
+                                    id="lancamento__duracao"
+                                    placeholder="Duração"
+                                    onChange={this.duracaoLancamento} />
 
                             </div>
-                            <button className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro" onClick={this.cadastrarLancamento}>Cadastrar</button>
+                            <button className="conteudoPrincipal-btn conteudoPrincipal-btn-cadastro"
+                                onClick={this.cadastrarLancamento}>
+                                Cadastrar
+                                </button>
                         </form>
 
                         <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Título</th>
+                                    <th>Sinopse</th>
+                                    <th>Data Lançamento</th>
+                                    <th>Plataforma</th>
+                                    <th>Categoria</th>
+                                    <th>Classificação</th>
+                                    <th>Duração</th>
+                                </tr>
+                            </thead>
                             <tbody id="tabela-lista-corpo">
                                 {this.state.lista.map(element => {
                                     return (
@@ -180,11 +212,11 @@ export default class Cadastrar_Lancamentos extends Component {
                                             <td>{element.idLancamentos}</td>
                                             <td>{element.nome}</td>
                                             <td>{element.sinopse}</td>
-                                            <td>{element.data_lancamento}</td>
-                                            <td>{element.idPlataformaNavegation === undefined ? "vázio" : element.idPlataformaNavegation.nome}</td>
-                                            <td>{element.idCategoriaNavegation === undefined ? "vázio" : element.idCategoriaNavigation.nome}</td>
+                                            <td>{element.dataLancamento}</td>
+                                            <td>{element.idPlataformaNavigation.nome}</td>
+                                            <td>{element.idCategoriaNavigation.nome}</td>
                                             <td>{element.classificacao}</td>
-                                            <td>{element.duracao_min}</td>
+                                            <td>{element.duracaoMin}</td>
                                         </tr>
                                     );
                                 })}

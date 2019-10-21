@@ -7,6 +7,9 @@ select * from Plataformas order by IdPlataforma asc
 select * from Usuarios order by IdUsuario asc
 select * from Lancamentos order by IdLancamentos asc
 
+delete from Lancamentos where IdLancamentos = 57
+
+select * from Plataformas where IdPlataforma = 5
 select C.Nome, L.Nome
 from Categorias C
 left join Lancamentos L
@@ -48,3 +51,4 @@ SELECT * FROM vwPlataformas WHERE IdPlataforma = 1
 
 
 
+select * from usuarios

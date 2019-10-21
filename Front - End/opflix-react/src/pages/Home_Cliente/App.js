@@ -3,6 +3,7 @@ import logo from '../../assets/img/agoravai.png';
 import './App.css';
 import Rodape from '../../components/Rodape';
 import {Route, Link, BrowserRouter as Router, Switch, Redirect} from "react-router-dom";
+import {parseJwt} from './../../services/auth'
 
 
 function App() {
