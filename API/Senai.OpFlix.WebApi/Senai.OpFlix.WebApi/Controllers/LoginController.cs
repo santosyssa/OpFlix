@@ -67,7 +67,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             }
         }
 
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         [HttpPost("cadastro")]
         public IActionResult CadastrarUsuario(Usuarios usuario)
         {

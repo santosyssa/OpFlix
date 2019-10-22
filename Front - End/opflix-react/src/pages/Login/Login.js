@@ -2,7 +2,11 @@ import React, { Component } from "react";
 
 import Axios from 'axios';
 
-import fundo from '../../assets/img/connection-contemporary-data-450035.jpg';
+import { Link } from "react-router-dom"
+
+import '../../assets/css/Login.css';
+
+// import fundo from '../../assets/img/connection-contemporary-data-450035.jpg';
 
 import Titulo from "../../components/Titulo";
 
@@ -41,11 +45,14 @@ export default class Login extends Component {
 
                     localStorage.setItem("usuario-opflix", data.data.token)
                     if (parseJwt().tipo == "Cliente") {
-
                         this.props.history.push('/home')
+                        // console.log(parseJwt().tipo)
                     }
-                    else {
+                    else if (parseJwt().tipo == "Administrador") {
+                        // console.log(parseJwt().tipo)
                         this.props.history.push('/adm')
+                    } else {
+                        console.log('erro')
                     }
                 } else {
                     console.log("Erroooooooou")
@@ -62,53 +69,62 @@ export default class Login extends Component {
         return (
 
             <section className='container'>
-                <img src={fundo} className="icone__fundo" />
                 <div className='loginPage'>
+                    <div className="containerLogin">
 
-                    <div className='titulo'>
-                        <Titulo titulo="Faça login para acessar sua conta." />
-                        {/* <p>Faça login para acessar sua conta.</p> */}
+                        <div className='titulo'>
+                            {/* <img src={fundo} className="icone__fundo" /> */}
+                            <Titulo titulo="L O G I N." />
+                            {/* <p>Faça login para acessar sua conta.</p> */}
 
-                    </div>
+                        </div>
 
-                    <div className='form_Login'>
-                        <form>
-                            <section className='item'>
-                                <input
-                                    className='item_Email'
-                                    placeholder='Email'
-                                    type='text'
-                                    name="Email"
-                                    id="login__email"
-                                    onChange={this.mudarEstadoEmail}
-                                    value={this.state.email} />
-                            </section>
+                        <div className='form_Login'>
+                            <form>
+                                <section className='item'>
+                                    <input
+                                        className='item_Email'
+                                        placeholder='Email'
+                                        type='text'
+                                        name="Email"
+                                        id="login__email"
+                                        onChange={this.mudarEstadoEmail}
+                                        value={this.state.email} />
+                                </section>
 
-                            <section className='item'>
-                                <input className='item_Senha'
-                                    placeholder='Senha'
-                                    type='password'
-                                    name='Senha'
-                                    id='login__senha'
-                                    onChange={this.mudarEstadoSenha}
-                                    value={this.state.senha} />
-                            </section>
+                                <section className='item'>
+                                    <input className='item_Senha'
+                                        placeholder='Senha'
+                                        type='password'
+                                        name='Senha'
+                                        id='login__senha'
+                                        onChange={this.mudarEstadoSenha}
+                                        value={this.state.senha} />
+                                </section>
 
-                            <div className='loginButton'>
-                                <button className='button' id="btn__login" onClick={this.efetuarLogin}>
-                                    Login
-                        </button>
-                            </div>
+                                <div className='loginButton'>
+                                    <button className='button' id="btn__login" onClick={this.efetuarLogin}>
+                                        Login
+                                </button>
+                                </div>
 
-                            {/* <div className='item_cadastrar'>
-                        <Link to='/cadastrar'>Cadastra-se</Link>
-                    </div> */}
 
-                            <p className="text_login"
-                                style={{ color: "red", textAlign: "center" }}>
-                                {this.state.erro}
-                            </p>
-                        </form>
+
+                                <p className="text_login"
+                                    style={{ color: "red", textAlign: "center" }}>
+                                    {this.state.erro}
+                                </p>
+                                
+
+                                <div className="posicaoLinks" >
+
+                        <Link className='Links' to="/cadastrar" >Ainda não possui conta ?</Link>
+                        <a className='Links' >Esqueci minha senha</a>
+                                </div>
+                                
+                            </form>
+                        </div>
+
                     </div>
                 </div>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {parseJwt} from './services/auth'
+import { parseJwt } from './services/auth'
 
 //pages
 //cliente
@@ -17,43 +17,71 @@ import Categorias from './pages/Categorias/Categorias';
 import NaoEncontrado from './pages/NaoEncotrado/NaoEncontrado';
 
 //routes
-import {Route, Link, BrowserRouter as Router, Switch, Redirect} from "react-router-dom";
+import { Route, Link, BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
 
 import * as serviceWorker from './serviceWorker';
 
 
 
+// const RotaPrivada = ({ component: Component }) => (
+//     <Router
+//         render={props =>
+//             localStorage.getItem("usuario-opflix") !== null ? (
+//                     <Component {...props} />
+//                 ) : (
+//                     <Redirect
+//                         to={{ pathname: "/", state: { from: props.location }}}
+//                     />
+//                 )
+//         }
+
+//     />
+// )
+
+// const RotaAdmin = ({ component: Component }) => (
+//     <Router
+//         render={props =>
+//             localStorage.getItem("usuario-opflix") !== null && parseJwt().tipo !== 'Cliente'?
+//                 (
+//                     <Component {...props} />
+//                 ) : (
+//                     <Redirect
+//                         to={{ pathname: "/", state: { from: props.location } }}
+//                     />
+//                 )
+//         }
+
+//     />
+// )
+
+
 const RotaPrivada = ({component: Component}) =>(
-    <Router
-        render={ props=>
-            localStorage.getItem("usuario-opflix") !== null ?
-            (
-                <Component {...props}/>
-            ): (
+    <Route
+        render={props =>
+            localStorage.getItem("usuario-opflix") !== null ? (
+                <Component {...props} /> 
+            ) : (
                 <Redirect 
-                    to={{pathname: "/home", state: {from: props.location}}}
+                    to={{ pathname: "/", state: {from: props.location}}}
                 />
             )
         }
-    
-   />
-)
+    />        
+);
 
 const RotaAdmin = ({component: Component}) =>(
-    <Router
-        render={ props=>
-            localStorage.getItem("usuario-opflix") !== null && parseJwt().tipo !== 'Cliente' ?
-            (
-                <Component {...props}/>
-            ): (
+    <Route
+        render={props =>
+            localStorage.getItem("usuario-opflix") !== null && parseJwt().tipo !== 'Cliente' ? (
+                <Component {...props} /> 
+            ) : (
                 <Redirect 
-                    to={{pathname: "/home", state: {from: props.location}}}
+                    to={{ pathname: "/", state: {from: props.location}}}
                 />
             )
         }
-    
-   />
-)
+    />        
+);
 
 
 const routing = (
@@ -61,16 +89,17 @@ const routing = (
         <div>
             <Switch>
                 {/* cliente */}
-                <Route exact path='/'component={Login}/>
-                <RotaPrivada path='/home' component={App}/>
-                <RotaPrivada path='/cadastrar' component={Cadastrar}/>
-                <RotaPrivada path='/lancamentos' component={Lançamentos}/>
-                
+                <Route exact path='/' component={Login} />
+                <RotaPrivada path='/home' component={App} />
+                <Route path='/cadastrar' component={Cadastrar} />
+                <RotaPrivada path='/lancamentos' component={Lançamentos} />
+
                 {/* adm */}
-                <RotaAdmin path='/adm' component={Home}/>
-                <RotaAdmin path='/cadastro' component={CadastrarLancamentos}/>
-                <RotaAdmin path='/categorias' component={Categorias}/>
-                <Route component={NaoEncontrado}/>
+                <RotaAdmin path='/adm' component={Home} />
+                <RotaAdmin path='/cadastro' component={CadastrarLancamentos} />
+                <RotaAdmin path='/categorias' component={Categorias} />
+
+                <Route component={NaoEncontrado} />
             </Switch>
         </div>
     </Router>

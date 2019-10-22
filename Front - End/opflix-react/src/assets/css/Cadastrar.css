@@ -1,0 +1,52 @@
+::placeholder{
+    color: #fffefe;
+    font-size: 1em;
+}
+
+.loginPage{
+    background-image: url("../img/connection-contemporary-data-450035.jpg");
+    height: 789px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover
+}
+.containerLogin{
+    background: #353535;
+    width: 35%;
+    height: 70%;
+    border-radius: 30px;
+}
+.containerLogin h1{
+    text-align: center;
+    color: #fffefea3
+}
+.containerLogin form{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    height: 500px
+}
+.containerLogin input{
+    background-color: #353535;
+    border-style: hidden;
+    border-bottom: solid 1px #707070;
+    
+    width: 395px;
+    font-size: 2em;
+    display: flex;
+    text-align: center;
+    outline: none;
+    color: #fff;
+    
+}
+.containerLogin button{
+    background: #302F2F;
+    border: #707070 solid 1px;
+    border-radius: 17px;
+    color: #fffefea3;
+    width: 140px;
+    height: 40px;
+    font-size: 1.2em
+}
