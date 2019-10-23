@@ -1,0 +1,22 @@
+.total {
+    background-color:#3e3d3d;
+  }
+
+   
+   
+.imgContainer img {
+    width:50%;
+    margin:0 25%;
+}
+
+#tabela-lista{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width:  100%;
+    justify-items: center;
+    border: 1px #707070 solid;
+    color: rgb(0, 0, 0);
+    margin-right: 30%;
+    text-align: center;
+    background-color: #707070 solid 
+}

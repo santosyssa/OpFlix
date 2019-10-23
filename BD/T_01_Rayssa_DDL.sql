@@ -29,9 +29,21 @@ create table Usuarios
 	IdUsuario int primary key identity not null
 	,Nome	varchar (250) not null unique 
 	,Email varchar (250) not null unique 
-	,Senha varchar (250) not null unique 
+	,Senha varchar (250) not null 
 	,IdTipo_Usuario int foreign key  references Tipos_Usuarios (IdTipo_Usuario)
+	,Imagem nvarchar (300)
 );
+
+drop table Usuarios
+
+
+alter table Usuarios
+	alter column Senha varchar (250) not null
+
+
+
+select * from Usuarios
+
 
 create table Lancamentos
 (
@@ -59,4 +71,4 @@ alter table Lancamentos
 	alter column Data_Lancamento Date
 
 alter table Usuarios
-	add Imagem varchar (300)
+	add Imagem nvarchar (max)

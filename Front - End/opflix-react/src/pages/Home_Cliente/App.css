@@ -1,22 +1,59 @@
-.App {
+.total {
+  background-color:#3e3d3d;
+}
+
+.container {
+ 
+}
+
+.cabecalhoPrincipal {
+  display:flex;
+  flex-direction: row-reverse;
+}
+
+.cabecalhoPrincipal button {
+  margin: 1em 1em 0 0 ;
+  background: #302F2F;
+  border: #707070 solid 1px;
+  border-radius: 17px;
+  color: #fffefea3;
+  width: 140px;
+  height: 40px;
+  font-size: 1.2em;
+
+}
+
+.imgContainer img {
+  width:50%;
+  margin:0 25%;
+}
+
+.cabecalhoPrincipal-nav {
+  width:90vw;
+  margin: 3.5em 5%;
+  display:flex;
+  justify-content: space-around;
+  background-color: #302F2F;
+  border-radius: 30px;;
+  height: 15vh;
+}
+
+.cabecalhoPrincipal-nav a {
+  text-decoration: none;
+  color:rgba(255, 254, 254, 0.600);
+  font-size: 5vh;
   text-align: center;
+  padding: 0.75em;
 }
 
-.App-logo {
-  height: 40vmin;
+footer{
+  border-top: 1px solid rgba(255, 254, 254, 0.600);
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.total footer{
+      height:7.5vh;
+  text-align: center;
+  color: rgba(255, 254, 254, 0.600);
 }
 
-.App-link {
-  color: #09d3ac;
-}

@@ -45,11 +45,11 @@ export default class Cadastrar extends Component {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix'),
             },
-                nome: this.state.nome,
-                email: this.state.email,
-                senha: this.state.senha,
-                idTipo_Usuario: 2,
-        })
+            nome: this.state.nome,
+            email: this.state.email,
+            senha: this.state.senha,
+            IdTipoUsuario: 2,
+        }).then(() => this.props.history.push('/'))
             .catch(erro => {
                 this.setState({ erro: 'Ocorreu algum prolema. Por favor insira as suas informações de novo.' })
                 console.log(this.state)

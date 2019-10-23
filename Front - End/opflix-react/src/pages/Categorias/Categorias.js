@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../../assets/img/agoravai.png';
 import Rodape from '../../components/Rodape';
-import Titulo from "../../components/Titulo";
+import '../../assets/css/Categorias.css';
 
 export default class Categorias extends Component {
 
@@ -58,43 +58,17 @@ export default class Categorias extends Component {
     console.log(this.state.lista)
     return (
 
-      <div>
+      <div className="total">
         <header className="cabecalhoPrincipal">
-          <div className="container">
+          <div className="imgContainer">
             <img src={logo} />
-
-            {/* <nav className="cabecalhoPrincipal-nav">
-              <Link href=''>Categorias</Link>
-              <Link href=''>Cadastrar</Link>
-              <Link href=''>Plartaformas</Link>
-          </nav> */}
           </div>
         </header>
 
         <main className="conteudoPrincipal">
           <section className="conteudoPrincipal-cadastro">
-            <Titulo titulo="Categorias" />
-            <div className="container" id="conteudoPrincipal-lista">
-              <table id="tabela-lista">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Título</th>
-                  </tr>
-                </thead>
+            {/* <Titulo titulo="Categorias" /> */}
 
-                <tbody id="tabela-lista-corpo">
-                  {this.state.lista.map(element => {
-                    return (
-                      <tr key={element.idCategoria}>
-                        <td>{element.idCategoria}</td>
-                        <td>{element.nome}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
 
             <div className="container" id="conteudoPrincipal-cadastro">
               <h2 className="conteudoPrincipal-cadastro-titulo">
@@ -118,6 +92,29 @@ export default class Categorias extends Component {
                 </div>
               </form>
             </div>
+
+            <div className="container-tabela" id="conteudoPrincipal-lista">
+              <table id="tabela-lista">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Título</th>
+                  </tr>
+                </thead>
+
+                <tbody id="tabela-lista-corpo">
+                  {this.state.lista.map(element => {
+                    return (
+                      <tr key={element.idCategoria}>
+                        <td>{element.idCategoria}</td>
+                        <td>{element.nome}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
           </section>
         </main>
 

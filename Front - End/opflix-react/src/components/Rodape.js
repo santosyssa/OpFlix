@@ -4,8 +4,8 @@ function Rodape(){
     return(
         <footer className="rodapePrincipal">
         <section className="rodapePrincipal-patrocinadores">
-          <div className="container">
-            <p>Senai de Informática - Alameda Barão de Limeira 539</p>
+          <div style={{}} className="container">
+            <p style={{color: "white"}}>Senai de Informática - Alameda Barão de Limeira 539</p>
           </div>
         </section>
       </footer>
