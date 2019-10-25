@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 
+import '../../assets/css/Lancamentos.css';
+
 import logo from '../../assets/img/agoravai.png';
 
 import Rodape from '../../components/Rodape';
 
 import Titulo from "../../components/Titulo";
+
+import {Link} from "react-router-dom";
 
 export default class Lancamentos extends Component {
 
@@ -42,50 +46,56 @@ export default class Lancamentos extends Component {
         return (
             <section className='container'>
 
-                <div>
+                <div className="total">
                     <header className="cabecalhoPrincipal">
-                        <div className="container">
-                            <img src={logo} />
 
+                        <div className="imgContainer">
+                           <Link to="/home"> 
+                           <img src={logo} />
+                           </Link>  
 
                         </div>
                     </header>
 
                     <main className="conteudoPrincipal">
                         <section className="conteudoPrincipal-cadastro">
-                            <Titulo titulo="Lançamentos" />
                             <div className="container" id="conteudoPrincipal-lista">
-                                <table id="tabela-lista">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Título</th>
-                                            <th>Sinopse</th>
-                                            <th>Data Lançamento</th>
-                                            <th>Plataforma</th>
-                                            <th>Categoria</th>
-                                            <th>Classificação</th>
-                                            <th>Duração</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody id="tabela-lista-corpo">
-                                        {this.state.lista.map(element => {
-                                            return (
-                                                <tr key={element.idLancamentos}>
-                                                    <td>{element.idLancamentos}</td>
-                                                    <td>{element.nome}</td>
-                                                    <td>{element.sinopse}</td>
-                                                    <td>{element.dataLancamento}</td>
-                                                    <td>{element.idPlataformaNavigation === undefined ? "vázio" : element.idPlataformaNavigation.nome}</td>
-                                                    <td>{element.idCategoriaNavigation === undefined ? "vázio" : element.idCategoriaNavigation.nome}</td>
-                                                    <td>{element.classificacao}</td>
-                                                    <td>{element.duracaoMin}</td>
+                                <div className="tabela">
+                                    <div className="table">
+                                        <Titulo titulo="Lançamentos" />
+                                        <table id="tabela-lista">
+                                            <thead>
+                                                <tr className="row">
+                                                    <th className="item">#</th>
+                                                    <th className="item">Título</th>
+                                                    <th className="item">Sinopse</th>
+                                                    <th className="item">Data Lançamento</th>
+                                                    <th className="item">Plataforma</th>
+                                                    <th className="item">Categoria</th>
+                                                    <th className="item">Classificação</th>
+                                                    <th className="item">Duração</th>
                                                 </tr>
-                                            );
-                                        })}
-                                    </tbody>
-                                </table>
+                                            </thead>
+
+                                            <tbody id="tabela-lista-corpo">
+                                                {this.state.lista.map(element => {
+                                                    return (
+                                                        <tr key={element.idLancamentos} className="row">
+                                                            <td className="item">{element.idLancamentos}</td>
+                                                            <td className="item">{element.nome}</td>
+                                                            <td className="item">{element.sinopse}</td>
+                                                            <td className="item">{element.dataLancamento}</td>
+                                                            <td className="item">{element.idPlataformaNavigation === undefined ? "vázio" : element.idPlataformaNavigation.nome}</td>
+                                                            <td className="item">{element.idCategoriaNavigation === undefined ? "vázio" : element.idCategoriaNavigation.nome}</td>
+                                                            <td className="item">{element.classificacao}</td>
+                                                            <td className="item">{element.duracaoMin}</td>
+                                                        </tr>
+                                                    );
+                                                })}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
 
 

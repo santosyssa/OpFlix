@@ -74,7 +74,7 @@ export default class Login extends Component {
 
                         <div className='titulo'>
                             {/* <img src={fundo} className="icone__fundo" /> */}
-                            <Titulo titulo="L O G I N." />
+                            <Titulo titulo="L O G I N" />
                             {/* <p>Faça login para acessar sua conta.</p> */}
 
                         </div>

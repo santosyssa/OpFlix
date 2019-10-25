@@ -1,0 +1,21 @@
+.total {
+    background-color:#3e3d3d;
+  }
+
+  .imgContainer img {
+    width:50%;
+    margin:0 25%;
+  }
+  
+  .table{
+      background-color:  #707070;
+      margin:1em 2em;
+  }
+
+  .table h1{
+      text-align: center;
+  }
+
+  .item {
+      border:1px solid #000;
+  }

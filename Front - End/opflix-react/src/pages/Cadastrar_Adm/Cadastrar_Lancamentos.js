@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 
-import icone from '../../assets/img/agoravai.png';
+import logo from '../../assets/img/agoravai.png';
 
 import Rodape from '../../components/Rodape';
 
 import Titulo from "../../components/Titulo";
+
+import '../../assets/css/Cadastrar_Lancamentos.css';
+
+import {Link} from "react-router-dom";
 
 export default class Cadastrar_Lancamentos extends Component {
 
@@ -121,15 +125,11 @@ export default class Cadastrar_Lancamentos extends Component {
     render() {
         return (
             <section className='container'>
-                <img src={icone} className="icone__logo" />
 
-                {/* <nav className="cabecalhoPrincipal-nav">
-              <Link href=''>Categorias</Link>
-              <Link href=''>Cadastrar</Link>
-              <Link href=''>Plartaformas</Link>
-          </nav> */}
+                <div className='total'>
 
-                <div className='loginPage'>
+                <Link to="/adm"> <img src={logo} /> </Link>
+                
                     <div className='titulo'>
                         <Titulo titulo="Cadastre novos lançamentos:" />
                         {/* <p>Cadastre novos lançamentos:</p> */}

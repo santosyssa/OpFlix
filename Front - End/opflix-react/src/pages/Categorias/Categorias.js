@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from '../../assets/img/agoravai.png';
 import Rodape from '../../components/Rodape';
 import '../../assets/css/Categorias.css';
+import {Link} from"react-router-dom";
 
 export default class Categorias extends Component {
 
@@ -61,7 +62,7 @@ export default class Categorias extends Component {
       <div className="total">
         <header className="cabecalhoPrincipal">
           <div className="imgContainer">
-            <img src={logo} />
+             <Link to="/adm"> <img src={logo} /> </Link>
           </div>
         </header>
 
