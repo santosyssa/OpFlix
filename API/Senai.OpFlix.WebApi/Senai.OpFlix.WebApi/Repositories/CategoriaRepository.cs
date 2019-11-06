@@ -10,7 +10,7 @@ namespace Senai.OpFlix.WebApi.Repositories
 {
     public class CategoriaRepository : ICategoriaRepository
     {
-        OpFlixContext ctx = new OpFlixContext();
+                OpFlixContext ctx = new OpFlixContext();
 
         public void Atualizar(Categorias categoria)
         {
