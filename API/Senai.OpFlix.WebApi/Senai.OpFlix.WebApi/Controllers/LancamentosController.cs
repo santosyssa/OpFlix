@@ -23,7 +23,7 @@ namespace Senai.OpFlix.WebApi.Controllers
             LancamentoRepository = new LancamentoRepository();
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public IActionResult ListarLancamentos()
         {
