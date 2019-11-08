@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 
 import MainScreen from './pages/main';
 import LoginScreen from './pages/login';
+import CategoriaScreen from './pages/categorias';
 
 const AuthStack = createStackNavigator({
     Login: { screen: LoginScreen },
@@ -12,17 +13,24 @@ const AuthStack = createStackNavigator({
 const MainNavigation = createBottomTabNavigator({
     Main: {
         screen: MainScreen,
+    },
+
+    Categorias: {
+        screen: CategoriaScreen
     }
 }, {
 
     tabBarOptions: {
         showIcon: true,
         showLabel: false,
-        inactiveBackgroundColor: '#2493BF',
-        activeBackgroundColor: '#2493BF',
+        inactiveBackgroundColor: '#2A5E8C',
+        activeBackgroundColor: '#0B1926',
+        textcolor: "white",
+
         style: {
           width: '100%',
-          height: 50,
+          height: 40,
+          
         },
       },
     }

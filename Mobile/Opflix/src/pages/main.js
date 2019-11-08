@@ -15,9 +15,9 @@ export default class Main extends Component {
 
             nome: "",
             sinopse: "",
-            data_lancamento: "",
+            dataLancamento: "",
             classificacao: "",
-            duracao: ""
+            duracaoMin: ""
 
         }
     }
@@ -43,8 +43,8 @@ export default class Main extends Component {
 
     render() {
         return (
-            <View>
-                <Text>Lançamento</Text>
+            <View style={style.total}>
+                <Text style={style.titulozao}>Lançamento</Text>
                 <View>
                     <FlatList
                         data={this.state.lista}
@@ -53,11 +53,11 @@ export default class Main extends Component {
                             <View style={style.table}>
                                 <Text style={style.title}>{item.nome}</Text>
                                 <Text style={style.sinopse}>{item.sinopse}</Text>
-                                <Text style={style.data}>{item.data_lancamento}</Text>
+                                <Text style={style.data}>{item.dataLancamento}</Text>
                                 <Text style={style.plataforma}>{item.idPlataformaNavigation.nome}</Text>
                                 <Text style={style.categoria}>{item.idCategoriaNavigation.nome}</Text>
                                 <Text style={style.classificacao}>{item.classificacao}</Text>
-                                <Text style={style.duracao}>{item.duracao}</Text>
+                                <Text style={style.duracao}>{item.duracaoMin}</Text>
                             </View>
                         )}
                     />
@@ -69,51 +69,87 @@ export default class Main extends Component {
 
 
 const style = StyleSheet.create({
+
+    total:{
+        backgroundColor: 'black',
+    },
+
+    titulozao:{
+        fontSize: 30,
+        backgroundColor: '#17344D',
+        textAlign: "center",
+        borderColor: "black",
+        color: "white"
+    },
+
     title:{
         fontSize: 20,
-        backgroundColor: '#2493BF',
+        backgroundColor: '#132B40',
+        textAlign: "center",
+        borderRadius: 5,
+        borderWidth: 1.5,
+        borderColor: "black",
+        color: "white"
+    },
+
+    sinopse:{
+        fontSize: 17,
+        backgroundColor: '#305973',
+        textAlign: "center",
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: "black",
+        color: "white"
+    },
+
+    data:{
+        fontSize: 17,
+        backgroundColor: '#46788C',
+        textAlign: "center",
+        borderRadius: 5,
+        borderWidth: 1.5,
+        borderColor: "black",
+        color: "white"
+    },
+
+    plataforma:{
+        fontSize: 17,
+        backgroundColor: '#305973',
+        textAlign: "center",
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: "black",
+        color: "white"
+    },
+
+    categoria:{
+        fontSize: 17,
+        backgroundColor: '#46788C',
         textAlign: "center",
         borderRadius: 5,
         borderWidth: 1.5,
         borderColor: "black"
-    },
-
-    sinopse:{
-        fontSize: 15,
-        backgroundColor: '#6CBAD9',
-        textAlign: "center",
-        borderRadius: 5,
-        borderWidth: 1,
-        borderColor: "black",
-    },
-
-    data:{
- 
-    },
-
-    plataforma:{
-        fontSize: 15,
-        backgroundColor: '#6CBAD9',
-        textAlign: "center",
-        borderRadius: 5,
-        borderWidth: 1,
-        borderColor: "black",
-    },
-
-    categoria:{
-        
+        ,color: "white"
     },
 
     classificacao:{
-        fontSize: 15,
-        backgroundColor: '#6CBAD9',
+        fontSize: 17,
+        backgroundColor: '#305973',
         textAlign: "center",
         borderRadius: 5,
         borderWidth: 1,
         borderColor: "black",
+        color: "white"
     },
 
     duracao:{
+        fontSize: 17,
+        backgroundColor: '#46788C',
+        textAlign: "center",
+        borderRadius: 5,
+        borderWidth: 1.5,
+        borderColor: "black",
+        color: "white"
     
     },
 })
