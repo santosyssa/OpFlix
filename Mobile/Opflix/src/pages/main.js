@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, AsyncStorage, StyleSheet } from 'react-native';
+import { Text, View, FlatList, Picker, AsyncStorage, StyleSheet } from 'react-native';
 
 
 
@@ -10,21 +10,49 @@ export default class Main extends Component {
         super();
         this.state = {
             lista: [],
+            novaLista: [],
+            categorias: [],
             idPlataformaNavegation: [],
-            idCategoriaNavegation: [],
+            idCategoriaNavigation: [],
 
             nome: "",
             sinopse: "",
             dataLancamento: "",
             classificacao: "",
-            duracaoMin: ""
+            duracaoMin: "",
+
+            valorSelecionado: null
 
         }
     }
 
+    alterarValor = (valor) => {
+        this.setState({ valorSelecionado: valor })
+       // trabalhar com outra lista
+
+        this.setState({ lista : this.state.lista.filter(x => x.idCategoria == valor) })
+        console.warn(this.state.lista.filter(x => x.idCategoria == valor))
+    }
+
     componentDidMount() {
         this._listarLancamentos();
+        this._listarCategorias();
     }
+
+    _listarCategorias = async () => {       
+        await fetch("http://192.168.4.203:5000/api/categorias", {
+            headers: {
+                'Authorization': 'Bearer ' + await AsyncStorage.getItem('@opflix:token'),
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(x => x.json())
+            .then(response => {
+                this.setState({ categorias: response })
+            })
+            .catch(erro => console.log(erro))
+    }
+
 
     _listarLancamentos = async () => {
         await fetch('http://192.168.4.203:5000/api/lancamentos', {
@@ -34,8 +62,6 @@ export default class Main extends Component {
             }
         })
             .then(x => x.json())
-            // .then(x => console.warn(x))
-            // .catch(x => console.warn(x))
             .then(x => this.setState({ lista: x }))
             .catch(erro => console.warn(erro))
     };
@@ -43,7 +69,19 @@ export default class Main extends Component {
 
     render() {
         return (
+
             <View style={style.total}>
+                <View>
+                    <Picker selectedValue={this.state.valorSelecionado} onValueChange={this.alterarValor}>
+                    <Picker.Item label="Selecione um item" value="0" />
+                        {this.state.categorias.map(item => {
+                            return (
+                                <Picker.Item label={item.nome} value={item.idCategoria} />
+                            )
+                        })}
+                    </Picker>
+                    <Text style={style.text}>{this.state.valorSelecionado}</Text>
+                </View>
                 <Text style={style.titulozao}>Lançamento</Text>
                 <View>
                     <FlatList
@@ -70,11 +108,11 @@ export default class Main extends Component {
 
 const style = StyleSheet.create({
 
-    total:{
-        backgroundColor: 'black',
+    total: {
+        backgroundColor: 'white',
     },
 
-    titulozao:{
+    titulozao: {
         fontSize: 30,
         backgroundColor: '#17344D',
         textAlign: "center",
@@ -82,7 +120,7 @@ const style = StyleSheet.create({
         color: "white"
     },
 
-    title:{
+    title: {
         fontSize: 20,
         backgroundColor: '#132B40',
         textAlign: "center",
@@ -92,7 +130,7 @@ const style = StyleSheet.create({
         color: "white"
     },
 
-    sinopse:{
+    sinopse: {
         fontSize: 17,
         backgroundColor: '#305973',
         textAlign: "center",
@@ -102,7 +140,7 @@ const style = StyleSheet.create({
         color: "white"
     },
 
-    data:{
+    data: {
         fontSize: 17,
         backgroundColor: '#46788C',
         textAlign: "center",
@@ -112,7 +150,7 @@ const style = StyleSheet.create({
         color: "white"
     },
 
-    plataforma:{
+    plataforma: {
         fontSize: 17,
         backgroundColor: '#305973',
         textAlign: "center",
@@ -122,17 +160,17 @@ const style = StyleSheet.create({
         color: "white"
     },
 
-    categoria:{
+    categoria: {
         fontSize: 17,
         backgroundColor: '#46788C',
         textAlign: "center",
         borderRadius: 5,
         borderWidth: 1.5,
         borderColor: "black"
-        ,color: "white"
+        , color: "white"
     },
 
-    classificacao:{
+    classificacao: {
         fontSize: 17,
         backgroundColor: '#305973',
         textAlign: "center",
@@ -142,7 +180,7 @@ const style = StyleSheet.create({
         color: "white"
     },
 
-    duracao:{
+    duracao: {
         fontSize: 17,
         backgroundColor: '#46788C',
         textAlign: "center",
@@ -150,6 +188,12 @@ const style = StyleSheet.create({
         borderWidth: 1.5,
         borderColor: "black",
         color: "white"
-    
+
     },
+
+    text: {
+        fontSize: 30,
+        alignSelf: 'center',
+        color: 'red',
+    }
 })
