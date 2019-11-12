@@ -41,7 +41,7 @@ export default class Main extends Component {
     render() {
         return (
             <View style={style.total}>
-                <Text style={style.titulozao}>Lançamento</Text>
+                <Text style={style.titulozao}>Categorias</Text>
                 <View>
                     <FlatList
                         data={this.state.categoria}

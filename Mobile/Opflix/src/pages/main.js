@@ -28,10 +28,11 @@ export default class Main extends Component {
 
     alterarValor = (valor) => {
         this.setState({ valorSelecionado: valor })
-       // trabalhar com outra lista
+        if (valor == 0) {
+            this.setState({ novaLista: [] })
+        }
 
-        this.setState({ lista : this.state.lista.filter(x => x.idCategoria == valor) })
-        console.warn(this.state.lista.filter(x => x.idCategoria == valor))
+        this.setState({ novaLista: this.state.lista.filter(x => x.idCategoria == valor) })
     }
 
     componentDidMount() {
@@ -39,7 +40,7 @@ export default class Main extends Component {
         this._listarCategorias();
     }
 
-    _listarCategorias = async () => {       
+    _listarCategorias = async () => {
         await fetch("http://192.168.4.203:5000/api/categorias", {
             headers: {
                 'Authorization': 'Bearer ' + await AsyncStorage.getItem('@opflix:token'),
@@ -72,20 +73,22 @@ export default class Main extends Component {
 
             <View style={style.total}>
                 <View>
+                    <Text style={style.titulozao}>Lançamento</Text>
+
                     <Picker selectedValue={this.state.valorSelecionado} onValueChange={this.alterarValor}>
-                    <Picker.Item label="Selecione um item" value="0" />
+                        <Picker.Item label="Selecione um item" value="0" />
                         {this.state.categorias.map(item => {
                             return (
                                 <Picker.Item label={item.nome} value={item.idCategoria} />
                             )
                         })}
                     </Picker>
+
                     <Text style={style.text}>{this.state.valorSelecionado}</Text>
                 </View>
-                <Text style={style.titulozao}>Lançamento</Text>
                 <View>
-                    <FlatList
-                        data={this.state.lista}
+                    {this.state.novaLista.length > 0 ? <FlatList
+                        data={this.state.novaLista}
                         keyExtractor={item => item.idLancamento}
                         renderItem={({ item }) => (
                             <View style={style.table}>
@@ -98,7 +101,22 @@ export default class Main extends Component {
                                 <Text style={style.duracao}>{item.duracaoMin}</Text>
                             </View>
                         )}
-                    />
+                    /> :
+                        <FlatList
+                            data={this.state.lista}
+                            keyExtractor={item => item.idLancamento}
+                            renderItem={({ item }) => (
+                                <View style={style.table}>
+                                    <Text style={style.title}>{item.nome}</Text>
+                                    <Text style={style.sinopse}>{item.sinopse}</Text>
+                                    <Text style={style.data}>{item.dataLancamento}</Text>
+                                    <Text style={style.plataforma}>{item.idPlataformaNavigation.nome}</Text>
+                                    <Text style={style.categoria}>{item.idCategoriaNavigation.nome}</Text>
+                                    <Text style={style.classificacao}>{item.classificacao}</Text>
+                                    <Text style={style.duracao}>{item.duracaoMin}</Text>
+                                </View>
+                            )}
+                        />}
                 </View>
             </View>
         );
@@ -192,8 +210,8 @@ const style = StyleSheet.create({
     },
 
     text: {
-        fontSize: 30,
+        fontSize: 25,
         alignSelf: 'center',
-        color: 'red',
+        color: 'black',
     }
 })
