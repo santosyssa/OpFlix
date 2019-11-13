@@ -52,9 +52,11 @@ export default class Login extends Component {
             <View style={styles.total}>
                 
                 <Image
-                    style={{ width: 200, height: 140, marginTop: -40, marginLeft: -40}}
+                    style={{ width: 200, height: 140, marginTop: -20, marginLeft: -20, marginBottom: 50}}
                     source={require('./../assets/img/agoravai.png')}
                 />
+                  <Text style={styles.titulozao}>Login</Text> 
+
                 <TextInput
                     style={styles.email}
                     placeholder='Email'
@@ -89,32 +91,39 @@ const styles = StyleSheet.create({
     
     total:{
         backgroundColor: '#302F2F',
-        padding: 50,
-        height: 10000
+        padding: 30,
+        height: 1000
+    },
+
+    titulozao:{
+        fontSize: 50,
+        textAlign: "center",
+        marginBottom: 50,
     },
 
     email: {
         fontSize: 30,
-        width: 240,
-        marginBottom: 10,
+        width: 330,
+        marginBottom: 50,
         
     },
 
     senha: {
         fontSize: 30,
-        width: 240,
-        marginBottom: 10,
+        width: 330,
+        marginBottom: 60,
     },
 
     button: {
-        fontSize: 20,
-        backgroundColor: '#D8E6F2',
+        fontSize: 22,
+        backgroundColor: '#3C3B3B',
         textAlign: "center",
-        marginBottom: 40,
-        borderRadius: 5,
-        borderWidth: 1,
+        marginBottom: 20,
+        borderRadius: 30,
+        borderWidth: 0.5,
         borderColor: "black",
-        height: 40
+        height: 50,
+        
     },
     text: {
         fontSize: 20,

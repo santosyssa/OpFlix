@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, Picker, AsyncStorage, StyleSheet } from 'react-native';
+import { Text, View, FlatList, Picker, AsyncStorage, StyleSheet, Image } from 'react-native';
 
 
 
 export default class Main extends Component {
 
+    static navigationOptions = {
+        header: null,
+        tabBarIcon: () => (
+            <Image
+                style={{ width: 35, height: 35 }}
+                source={require('./../assets/img/3d-glasses.png')}
+            />
+        )
+    };
+
     constructor() {
-        // tudo que tiver em component sera passado p ca
+
         super();
         this.state = {
             lista: [],
@@ -75,8 +85,11 @@ export default class Main extends Component {
                 <View>
                     <Text style={style.titulozao}>Lançamento</Text>
 
-                    <Picker selectedValue={this.state.valorSelecionado} onValueChange={this.alterarValor}>
-                        <Picker.Item label="Selecione um item" value="0" />
+                    <Picker
+                        style={style.filtrar}
+                        selectedValue={this.state.valorSelecionado}
+                        onValueChange={this.alterarValor}>
+                        <Picker.Item label="Filtrar por" value="0" />
                         {this.state.categorias.map(item => {
                             return (
                                 <Picker.Item label={item.nome} value={item.idCategoria} />
@@ -84,7 +97,7 @@ export default class Main extends Component {
                         })}
                     </Picker>
 
-                    <Text style={style.text}>{this.state.valorSelecionado}</Text>
+
                 </View>
                 <View>
                     {this.state.novaLista.length > 0 ? <FlatList
@@ -127,84 +140,80 @@ export default class Main extends Component {
 const style = StyleSheet.create({
 
     total: {
-        backgroundColor: 'white',
+        backgroundColor: '#302F2F',
     },
 
     titulozao: {
         fontSize: 30,
-        backgroundColor: '#17344D',
+        backgroundColor: '#302F2F',
         textAlign: "center",
-        borderColor: "black",
         color: "white"
+    },
+
+    filtrar:{
+        backgroundColor: '#544D4C',
     },
 
     title: {
         fontSize: 20,
-        backgroundColor: '#132B40',
+        backgroundColor: '#474140',
         textAlign: "center",
         borderRadius: 5,
         borderWidth: 1.5,
-        borderColor: "black",
         color: "white"
     },
 
     sinopse: {
         fontSize: 17,
-        backgroundColor: '#305973',
+        backgroundColor: '#302F2F',
         textAlign: "center",
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: "black",
         color: "white"
     },
 
     data: {
         fontSize: 17,
-        backgroundColor: '#46788C',
+        backgroundColor: '#302F2F',
         textAlign: "center",
         borderRadius: 5,
         borderWidth: 1.5,
-        borderColor: "black",
         color: "white"
     },
 
     plataforma: {
         fontSize: 17,
-        backgroundColor: '#305973',
+        backgroundColor: '#302F2F',
         textAlign: "center",
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: "black",
         color: "white"
     },
 
     categoria: {
         fontSize: 17,
-        backgroundColor: '#46788C',
+        backgroundColor: '#302F2F',
         textAlign: "center",
         borderRadius: 5,
         borderWidth: 1.5,
-        borderColor: "black"
-        , color: "white"
+        color: "white"
     },
 
     classificacao: {
         fontSize: 17,
-        backgroundColor: '#305973',
+        backgroundColor: '#302F2F',
         textAlign: "center",
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: "black",
         color: "white"
     },
 
     duracao: {
         fontSize: 17,
-        backgroundColor: '#46788C',
+        backgroundColor: '#302F2F',
         textAlign: "center",
         borderRadius: 5,
         borderWidth: 1.5,
-        borderColor: "black",
         color: "white"
 
     },

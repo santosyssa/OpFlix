@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, AsyncStorage, StyleSheet } from 'react-native';
+import { Text, View, FlatList, AsyncStorage, StyleSheet, Image } from 'react-native';
 
 
 
 export default class Main extends Component {
+
+    static navigationOptions = {
+        header: null,
+        tabBarIcon: () => (
+            <Image
+                style={{width: 35, height: 35}}
+                source={require('./../assets/img/browser.png')}
+            />
+        )
+    };
 
     constructor() {
         // tudo que tiver em component sera passado p ca
