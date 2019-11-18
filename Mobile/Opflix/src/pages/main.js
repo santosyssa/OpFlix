@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, Picker, AsyncStorage, StyleSheet, Image } from 'react-native';
+import { Text, View, FlatList, Picker, AsyncStorage, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 
 
@@ -77,12 +77,19 @@ export default class Main extends Component {
             .catch(erro => console.warn(erro))
     };
 
+    _sairDaConta = () => {
+        this.props.navigation.navigate('AuthStack')
+    }
 
     render() {
         return (
 
             <View style={style.total}>
                 <View>
+                    <TouchableOpacity onPress={this._sairDaConta}>
+                        <Text style={style.sair}>Sair</Text>
+                    </TouchableOpacity>
+
                     <Text style={style.titulozao}>Lançamento</Text>
 
                     <Picker
@@ -105,12 +112,20 @@ export default class Main extends Component {
                         keyExtractor={item => item.idLancamento}
                         renderItem={({ item }) => (
                             <View style={style.table}>
-                                <Text style={style.title}>{item.nome}</Text>
+                                <View style={style.row}>
+                                    <Text style={style.title}>{item.nome}</Text>
+                                </View>
+
                                 <Text style={style.sinopse}>{item.sinopse}</Text>
+
                                 <Text style={style.data}>{item.dataLancamento}</Text>
-                                <Text style={style.plataforma}>{item.idPlataformaNavigation.nome}</Text>
-                                <Text style={style.categoria}>{item.idCategoriaNavigation.nome}</Text>
+
+                                {/* <Text style={style.plataforma}>{item.idPlataformaNavigation.nome}</Text> */}
+
+                                {/* <Text style={style.categoria}>{item.idCategoriaNavigation.nome}</Text> */}
+
                                 <Text style={style.classificacao}>{item.classificacao}</Text>
+
                                 <Text style={style.duracao}>{item.duracaoMin}</Text>
                             </View>
                         )}
@@ -120,12 +135,20 @@ export default class Main extends Component {
                             keyExtractor={item => item.idLancamento}
                             renderItem={({ item }) => (
                                 <View style={style.table}>
-                                    <Text style={style.title}>{item.nome}</Text>
+                                    <View style={style.row}>
+                                        <Text style={style.title}>{item.nome}</Text>
+                                    </View>
+
                                     <Text style={style.sinopse}>{item.sinopse}</Text>
+
                                     <Text style={style.data}>{item.dataLancamento}</Text>
-                                    <Text style={style.plataforma}>{item.idPlataformaNavigation.nome}</Text>
-                                    <Text style={style.categoria}>{item.idCategoriaNavigation.nome}</Text>
+
+                                    {/* <Text style={style.plataforma}>{item.idPlataformaNavigation.nome}</Text> */}
+
+                                    {/* <Text style={style.categoria}>{item.idCategoriaNavigation.nome}</Text> */}
+
                                     <Text style={style.classificacao}>{item.classificacao}</Text>
+
                                     <Text style={style.duracao}>{item.duracaoMin}</Text>
                                 </View>
                             )}
@@ -150,77 +173,98 @@ const style = StyleSheet.create({
         color: "white"
     },
 
-    filtrar:{
+    table: {
+        marginVertical: 15,
+        color: 'white',
+        backgroundColor: '#474140',
+        borderColor: 'black',
+        borderRadius: 15.5,
+        borderWidth: 1,
+        margin: 10,
+    },
+
+    row: {
+        flexDirection: 'row',
+        marginVertical: 5,
+        marginHorizontal: 10,
+        textAlign: 'center'
+    },
+
+    filtrar: {
         backgroundColor: '#544D4C',
+        borderRadius: 15.5,
+        borderWidth: 1,
+        margin: 10,
+        color: 'white'
     },
 
     title: {
         fontSize: 20,
         backgroundColor: '#474140',
         textAlign: "center",
-        borderRadius: 5,
-        borderWidth: 1.5,
-        color: "white"
+        color: 'white',
+
     },
 
     sinopse: {
         fontSize: 17,
         backgroundColor: '#302F2F',
         textAlign: "center",
-        borderRadius: 5,
-        borderWidth: 1,
-        color: "white"
+        color: 'white',
     },
 
     data: {
         fontSize: 17,
         backgroundColor: '#302F2F',
         textAlign: "center",
-        borderRadius: 5,
-        borderWidth: 1.5,
-        color: "white"
+        color: 'white',
     },
 
     plataforma: {
         fontSize: 17,
         backgroundColor: '#302F2F',
         textAlign: "center",
-        borderRadius: 5,
-        borderWidth: 1,
-        color: "white"
+
     },
 
     categoria: {
         fontSize: 17,
         backgroundColor: '#302F2F',
         textAlign: "center",
-        borderRadius: 5,
-        borderWidth: 1.5,
-        color: "white"
+
     },
 
     classificacao: {
         fontSize: 17,
         backgroundColor: '#302F2F',
         textAlign: "center",
-        borderRadius: 5,
-        borderWidth: 1,
-        color: "white"
+        color: 'white',
     },
 
     duracao: {
         fontSize: 17,
         backgroundColor: '#302F2F',
         textAlign: "center",
-        borderRadius: 5,
-        borderWidth: 1.5,
-        color: "white"
+        color: 'white',
 
     },
 
     text: {
         fontSize: 25,
         alignSelf: 'center',
-        color: 'black',
+        color: 'white',
+    },
+
+    sair:{
+        fontSize: 22,
+        backgroundColor: '#3C3B3B',
+        textAlign: "center",
+        marginBottom: 30,
+        borderRadius: 30,
+        borderWidth: 0.5,
+        borderColor: "black",
+        height: 40,
+        marginTop: 34,
+        width: 100,
     }
 })

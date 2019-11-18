@@ -76,7 +76,7 @@ const style = StyleSheet.create({
 
     titulozao:{
         fontSize: 30,
-        backgroundColor: '#17344D',
+        backgroundColor: '#302F2F',
         textAlign: "center",
         borderColor: "black",
         color: "white"
@@ -84,11 +84,12 @@ const style = StyleSheet.create({
 
     title:{
         fontSize: 20,
-        backgroundColor: '#132B40',
+        backgroundColor: '#474140',
         textAlign: "center",
         borderRadius: 5,
         borderWidth: 1.5,
         borderColor: "black",
-        color: "white"
+        color: "white",
+        padding: 25
     }
 })
