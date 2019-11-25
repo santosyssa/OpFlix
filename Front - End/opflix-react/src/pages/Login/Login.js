@@ -17,8 +17,8 @@ export default class Login extends Component {
     constructor() {
         super();
         this.state = {
-            email: "",
-            senha: "",
+            email: "dudruns@email.com",
+            senha: "tananzinho",
             erro: ""
         }
     }
@@ -34,7 +34,7 @@ export default class Login extends Component {
     efetuarLogin = (event) => {
         event.preventDefault();
 
-        Axios.post("http://localhost:5000/api/login", {
+        Axios.post("http://192.168.4.203:5000/api/login", {
             email: this.state.email,
             senha: this.state.senha
         })

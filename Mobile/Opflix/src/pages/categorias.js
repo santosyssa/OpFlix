@@ -9,7 +9,7 @@ export default class Main extends Component {
         header: null,
         tabBarIcon: () => (
             <Image
-                style={{width: 35, height: 35}}
+                style={{ width: 35, height: 35 }}
                 source={require('./../assets/img/browser.png')}
             />
         )
@@ -21,10 +21,10 @@ export default class Main extends Component {
         this.state = {
             categoria: [],
             lancamentos: [],
-            
+
 
             nome: "",
-           
+
 
         }
     }
@@ -70,26 +70,32 @@ export default class Main extends Component {
 
 const style = StyleSheet.create({
 
-    total:{
+    total: {
         backgroundColor: 'black',
     },
 
-    titulozao:{
+    titulozao: {
         fontSize: 30,
         backgroundColor: '#302F2F',
         textAlign: "center",
         borderColor: "black",
-        color: "white"
+        color: "black",
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
     },
 
-    title:{
+    title: {
         fontSize: 20,
         backgroundColor: '#474140',
         textAlign: "center",
         borderRadius: 5,
         borderWidth: 1.5,
         borderColor: "black",
-        color: "white",
-        padding: 25
+        color: "black",
+        padding: 25,
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
     }
 })

@@ -15,7 +15,7 @@ export default class Login extends Component {
         };
     }
 
-    
+
     _realizarLogin = async () => {
         await fetch('http://192.168.4.203:5000/api/login', {
             method: 'POST',
@@ -50,12 +50,12 @@ export default class Login extends Component {
     render() {
         return (
             <View style={styles.total}>
-                
+
                 <Image
-                    style={{ width: 200, height: 140, marginTop: -20, marginLeft: -20, marginBottom: 50}}
+                    style={{ width: 200, height: 140, marginTop: -20, marginLeft: -20, marginBottom: 50 }}
                     source={require('./../assets/img/agoravai.png')}
                 />
-                  <Text style={styles.titulozao}>Login</Text> 
+                <Text style={styles.titulozao}>Login</Text>
 
                 <TextInput
                     style={styles.email}
@@ -88,34 +88,41 @@ export default class Login extends Component {
 }
 
 const styles = StyleSheet.create({
-    
-    total:{
+
+    total: {
         backgroundColor: '#302F2F',
         padding: 30,
         height: 1000
     },
 
-    titulozao:{
+    titulozao: {
         fontSize: 50,
         textAlign: "center",
         marginBottom: 50,
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
     },
 
     email: {
         fontSize: 30,
         width: 330,
         marginBottom: 50,
-        
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
     },
 
     senha: {
         fontSize: 30,
         width: 330,
-        marginBottom: 60,
+        marginBottom: 60, textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
     },
 
     button: {
-        fontSize: 22,
+        fontSize: 25,
         backgroundColor: '#3C3B3B',
         textAlign: "center",
         marginBottom: 20,
@@ -123,10 +130,13 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: "black",
         height: 50,
-        
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 60
+
     },
     text: {
         fontSize: 20,
         textAlign: "center"
     }
-  });
+});

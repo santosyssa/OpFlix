@@ -18,7 +18,7 @@ export default class Categorias extends Component {
 
 
   listarCategorias = () => {
-    fetch('http://localhost:5000/api/categorias', {
+    fetch('http://192.168.4.203:5000/api/categorias', {
       method: 'GET',
       headers: { 'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix') }
     })
@@ -31,7 +31,7 @@ export default class Categorias extends Component {
 
   cadastrarCategorias = (event) => {
     event.preventDefault();
-    fetch('http://localhost:5000/api/categorias', {
+    fetch('http://192.168.4.203:5000/api/categorias', {
         method: "POST",
         body: JSON.stringify({
             nome: this.state.nome,

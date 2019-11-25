@@ -170,7 +170,10 @@ const style = StyleSheet.create({
         fontSize: 30,
         backgroundColor: '#302F2F',
         textAlign: "center",
-        color: "white"
+        color: "black",
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
     },
 
     table: {
@@ -195,14 +198,20 @@ const style = StyleSheet.create({
         borderRadius: 15.5,
         borderWidth: 1,
         margin: 10,
-        color: 'white'
+        color: 'black',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
     },
 
     title: {
         fontSize: 20,
         backgroundColor: '#474140',
         textAlign: "center",
-        color: 'white',
+        color: 'black',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
 
     },
 
@@ -210,52 +219,54 @@ const style = StyleSheet.create({
         fontSize: 17,
         backgroundColor: '#302F2F',
         textAlign: "center",
-        color: 'white',
+        color: 'black',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
     },
 
     data: {
         fontSize: 17,
         backgroundColor: '#302F2F',
         textAlign: "center",
-        color: 'white',
+        color: 'black',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
     },
 
-    plataforma: {
-        fontSize: 17,
-        backgroundColor: '#302F2F',
-        textAlign: "center",
 
-    },
-
-    categoria: {
-        fontSize: 17,
-        backgroundColor: '#302F2F',
-        textAlign: "center",
-
-    },
 
     classificacao: {
         fontSize: 17,
         backgroundColor: '#302F2F',
         textAlign: "center",
-        color: 'white',
+        color: 'black',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
     },
 
     duracao: {
         fontSize: 17,
         backgroundColor: '#302F2F',
         textAlign: "center",
-        color: 'white',
-
+        color: 'black',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
     },
 
     text: {
         fontSize: 25,
         alignSelf: 'center',
-        color: 'white',
+        color: 'black',
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
     },
 
-    sair:{
+    sair: {
         fontSize: 22,
         backgroundColor: '#3C3B3B',
         textAlign: "center",
@@ -266,5 +277,8 @@ const style = StyleSheet.create({
         height: 40,
         marginTop: 34,
         width: 100,
+        textShadowColor: 'rgba(0, 0, 0, 0.75)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10
     }
 })

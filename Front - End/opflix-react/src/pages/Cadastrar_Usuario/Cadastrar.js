@@ -40,7 +40,7 @@ export default class Cadastrar extends Component {
     cadastrarUsuario = (event) => {
         event.preventDefault();
         console.log(localStorage.getItem('usuario-opflix'))
-        Axios.post('http://localhost:5000/api/login/cadastro', {
+        Axios.post('http://192.168.4.203:5000/api/login/cadastro', {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix'),

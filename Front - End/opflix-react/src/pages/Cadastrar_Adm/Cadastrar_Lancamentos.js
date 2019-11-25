@@ -39,7 +39,7 @@ export default class Cadastrar_Lancamentos extends Component {
     }
 
     listarLancamentos = () => {
-        fetch('http://localhost:5000/api/lancamentos', {
+        fetch('http://192.168.4.203:5000/api/lancamentos', {
             method: 'GET',
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix') }
         })
@@ -50,7 +50,7 @@ export default class Cadastrar_Lancamentos extends Component {
     }
 
     listarCategorias = () => {
-        fetch('http://localhost:5000/api/categorias', {
+        fetch('http://192.168.4.203:5000/api/categorias', {
             method: 'GET',
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix') }
         })
@@ -62,7 +62,7 @@ export default class Cadastrar_Lancamentos extends Component {
     }
 
     listarPlataformas = () => {
-        fetch('http://localhost:5000/api/plataformas', {
+        fetch('http://192.168.4.203:5000/api/plataformas', {
             method: 'GET',
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix') }
         })
@@ -73,7 +73,7 @@ export default class Cadastrar_Lancamentos extends Component {
 
     cadastrarLancamento = (event) => {
         event.preventDefault();
-        fetch('http://localhost:5000/api/lancamentos', {
+        fetch('http://192.168.4.203:5000/api/lancamentos', {
             method: "POST",
             body: JSON.stringify({
                 nome: this.state.nome,

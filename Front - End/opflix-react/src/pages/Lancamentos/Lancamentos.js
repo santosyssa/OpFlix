@@ -34,7 +34,7 @@ export default class Lancamentos extends Component {
     }
 
     listarLancamentos = () => {
-        fetch('http://localhost:5000/api/lancamentos', {
+        fetch('http://192.168.4.203:5000/api/lancamentos', {
             method: 'GET',
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem('usuario-opflix') }
         })

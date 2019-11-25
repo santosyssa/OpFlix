@@ -24,7 +24,7 @@ export default class Home extends Component {
             <nav className="cabecalhoPrincipal-nav">
               <Link to='/categorias'>Categorias</Link>
               <Link to='/cadastro'>Cadastrar</Link>
-              <Link href=''>Plartaformas</Link>
+              <Link to=''>Plataformas</Link>
             </nav>
           </div>
 
