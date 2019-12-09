@@ -1,1 +1,1 @@
-http://localhost:5000/swagger/index.html
+http://192.168.4.93:5000:/swagger/index.html

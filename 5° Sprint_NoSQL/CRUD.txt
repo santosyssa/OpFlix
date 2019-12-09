@@ -1,0 +1,8 @@
+
+ db.mapas.find().pretty()
+
+db.mapas.insert({titulo: "Até o último homem", genero: "Drama", latitude: "25.9533892", longitude: "124.8887688"})
+
+db.mapas.update( {"_id" : ObjectId("5dee7f10b985739acaa74b2d")}, {$set: {genero: "Biografia"}})
+
+db.mapas.remove({"_id": ObjectId("5dee7a0858cb9436b4ef007b")})
