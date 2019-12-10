@@ -21,7 +21,7 @@ function App() {
 
           <nav className="cabecalhoPrincipal-nav">
             <Link to='/lancamentos'>Lançamentos</Link>
-            <Link href=''>Séries</Link>
+            <Link to='/localizacao'>Localização</Link>
             <Link href=''>Filmes</Link>
           </nav>
         </div>

@@ -9,6 +9,7 @@ import Login from './pages/Login/Login';
 import App from './pages/Home_Cliente/App';
 import Cadastrar from './pages/Cadastrar_Usuario/Cadastrar'
 import Lançamentos from './pages/Lancamentos/Lancamentos'
+import Localizacao from './pages/Localizacao/localizacao'
 
 //adm
 import Home from './pages/Home_Adm/Home';
@@ -93,6 +94,7 @@ const routing = (
                 <RotaPrivada path='/home' component={App} />
                 <Route path='/cadastrar' component={Cadastrar} />
                 <RotaPrivada path='/lancamentos' component={Lançamentos} />
+                <Route exact path='/localizacao' component={Localizacao} />
 
                 {/* adm */}
                 <RotaAdmin path='/adm' component={Home} />

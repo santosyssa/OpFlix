@@ -14,15 +14,15 @@ namespace Senai.OpFlix.WebApi.Domains
         public string Id { get; set; }
 
         [BsonRequired]
-        public string Título { get; set; }
+        public string titulo { get; set; }
 
         [BsonRequired]
-        public string Gênero { get; set; }
+        public string genero { get; set; }
 
         [BsonRequired]
-        public string Latitude { get; set; }
+        public string latitude { get; set; }
 
         [BsonRequired]
-        public string Longitude { get; set; }
+        public string longitude { get; set; }
     }
 }
